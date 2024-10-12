@@ -1,0 +1,55 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: cl.exe build all files for debug",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/EHsc",
+                "/nologo",
+                "/Fe${workspaceFolder}\\Out\\Debug\\Dgv.exe",
+                "${workspaceFolder}\\Src\\*.cpp"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\Out\\Debug"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Task to compile and debug all .cpp files in the src directory.."
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: cl.exe build all files for release",
+            "command": "cl.exe",
+            "args": [
+                "/O2",
+                "/EHsc",
+                "/MD",  // Use multi-threaded DLL runtime
+                "/nologo",
+                "/Fe${workspaceFolder}\\Out\\Release\\Dgv.exe",
+                "${workspaceFolder}\\Src\\*.cpp",
+                "/link",
+                "/OPT:REF",  // Eliminate unreferenced code
+                "/OPT:ICF"   // Perform identical COMDAT folding
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\Out\\Release"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Task to compile and execute program in Release directory.."
+        }
+    ],
+    "version": "2.0.0"
+}
